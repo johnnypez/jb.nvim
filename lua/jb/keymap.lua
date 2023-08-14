@@ -37,5 +37,3 @@ map("n", "<Esc>", ":noh <CR>", { desc = "Clear highlights" })
 
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Find & Replace Word under cursor" })
-
--- map("c", "<Tab>", "<C-d>", { desc = "Show Completions" })

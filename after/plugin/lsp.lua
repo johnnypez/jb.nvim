@@ -1,3 +1,7 @@
+-- this doc was very helpful
+-- https://dev.to/vonheikemen/make-lsp-zeronvim-coexists-with-other-plugins-instead-of-controlling-them-2i80
+--
+
 local lsp = require("lsp-zero").preset({})
 -- basic
 lsp.on_attach(function(client, bufnr)
@@ -5,6 +9,18 @@ lsp.on_attach(function(client, bufnr)
   -- to learn the available actions
   lsp.default_keymaps({ buffer = bufnr })
 end)
+
+lsp.extend_cmp()
+
+local cmp = require('cmp')
+
+cmp.setup({
+  sources = {
+    { name = 'copilot' },
+    { name = 'nvim_lsp' },
+  }
+})
+
 
 lsp.setup()
 
