@@ -3,6 +3,10 @@ local opt = vim.opt
 vim.o.termguicolors = true
 opt.mouse = "a"
 
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
+
 -- set relative line numbers
 vim.wo.number = true
 vim.o.relativenumber = true
