@@ -30,6 +30,11 @@ require("lazy").setup({
     }
   },
   {
+    "lewis6991/gitsigns.nvim", init = function()
+      require('gitsigns').setup()
+    end
+  },
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -91,7 +96,13 @@ require("lazy").setup({
     build = ':TSUpdate',
   },
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -104,6 +115,15 @@ require("lazy").setup({
     cond = function()
       return vim.fn.executable 'make' == 1
     end,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
   },
   {
     -- Autocompletion

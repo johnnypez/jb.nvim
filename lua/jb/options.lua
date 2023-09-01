@@ -49,3 +49,6 @@ vim.o.cursorline = true
 
 -- see :h fillchars
 opt.fillchars = { eob = " " }
+
+-- set background transparent
+-- vim.opt.background = "dark"

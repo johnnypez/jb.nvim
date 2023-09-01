@@ -4,12 +4,14 @@
 
 local lsp = require("lsp-zero").preset({})
 -- basic
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp.default_keymaps({ buffer = bufnr })
+  vim.keymap.set({"n","v"}, "<leader>=", function() vim.lsp.buf.format { async = false } end, { desc = "Format Doc" })
+  vim.keymap.set({"n", "v"}, "<leader>gr", function() vim.lsp.buf.references() end, { desc = "List references to current symbol" })
+  vim.keymap.set({"n", "v"}, "<leader>gn", function() vim.lsp.buf.document_highlight() end, { desc = "Go to next occurrence" })
 end)
-
 lsp.extend_cmp()
 
 local cmp = require('cmp')
@@ -18,7 +20,18 @@ cmp.setup({
   sources = {
     { name = 'copilot' },
     { name = 'nvim_lsp' },
-  }
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = {
+    -- `Enter` key to confirm completion
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+
+    -- Ctrl+Space to trigger completion menu
+    ['<C-Space>'] = cmp.mapping.complete(),
+  },
 })
 
 
