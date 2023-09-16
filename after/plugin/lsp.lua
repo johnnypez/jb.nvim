@@ -3,6 +3,14 @@
 --
 
 local lsp = require("lsp-zero").preset({})
+
+local function quickfix()
+    vim.lsp.buf.code_action({
+        filter = function(a) return a.isPreferred end,
+        apply = true
+    })
+end
+
 -- basic
 lsp.on_attach(function(_, bufnr)
   -- see :help lsp-zero-keybindings
@@ -11,6 +19,16 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set({"n","v"}, "<leader>=", function() vim.lsp.buf.format { async = false } end, { desc = "Format Doc" })
   vim.keymap.set({"n", "v"}, "<leader>gr", function() vim.lsp.buf.references() end, { desc = "List references to current symbol" })
   vim.keymap.set({"n", "v"}, "<leader>gn", function() vim.lsp.buf.document_highlight() end, { desc = "Go to next occurrence" })
+  vim.keymap.set('n', '<leader>qf', quickfix, { silent = true, desc = "Quick Fix"})
+  vim.keymap.set('n', '<leader>po', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<leader>ph', '<cmd>lua vim.diagnostic.hide()<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<leader>ps', '<cmd>lua vim.diagnostic.show()<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '[[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', ']]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+  -- The following command requires plug-ins "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", and optionally "kyazdani42/nvim-web-devicons" for icon support
+  vim.keymap.set('n', '<leader>pl', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<leader>r', function () vim.lsp.buf.rename() end, { noremap = true, silent = true })
+  vim.keymap.set('n', '<leader>ca', function () vim.lsp.buf.code_action() end, { noremap = true, silent = true })
 end)
 lsp.extend_cmp()
 

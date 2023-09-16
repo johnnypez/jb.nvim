@@ -1,14 +1,7 @@
 require("lazy").setup({
   -- Theme Setup
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight'
-    end
-  },
   -- use nvim-tree
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
@@ -40,11 +33,11 @@ require("lazy").setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'tokyonight',
-        component_separators = '|',
-        section_separators = '',
-      },
+        icons_enabled = true,
+        theme = 'catppuccin',
+        -- padding = 2,
+        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' }     },
     },
   },
   {
@@ -153,5 +146,16 @@ require("lazy").setup({
       require("copilot_cmp").setup()
     end
   },
-  { 'mg979/vim-visual-multi' }
+  { 'mg979/vim-visual-multi' },
+  {
+    'RRethy/vim-illuminate',
+    config = function()
+      require('illuminate').configure({
+        providers = {
+          'lsp',
+          'treesitter'
+        }
+      })
+    end
+  }
 })

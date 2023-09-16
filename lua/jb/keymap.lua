@@ -23,8 +23,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- move between buffers
-map("n", "<A-j>", ":bn<CR>", { silent = true, desc = "Next Buffer" })
-map("n", "<A-k>", ":bp<CR>", { silent = true, desc = "Prev Buffer" })
+map("n", "<Tab>", ":bn<CR>", { silent = true, desc = "Next Buffer" })
+map("n", "<M-Tab>", ":bp<CR>", { silent = true, desc = "Prev Buffer" })
 
 -- greatest remap ever
 map("x", "<leader>p", [["_dP]])

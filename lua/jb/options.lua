@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-vim.o.termguicolors = true
+opt.termguicolors = true
 opt.mouse = "a"
 
 -- go to previous/next line with h,l,left arrow and right arrow
@@ -9,46 +9,46 @@ opt.whichwrap:append "<>[]hl"
 
 -- set relative line numbers
 vim.wo.number = true
-vim.o.relativenumber = true
+opt.relativenumber = true
 
 -- indenting
-vim.o.shiftwidth = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 opt.tabstop = 2
 
 -- Save undo history
-vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undo"
-vim.o.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undo"
+opt.undofile = true
 
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+opt.updatetime = 250
+opt.timeoutlen = 300
 
 
 -- highlight max line length
-vim.opt.colorcolumn = "120"
+opt.colorcolumn = "120"
 
 -- highlight search
-vim.o.hlsearch = true
-vim.o.incsearch = true
+opt.hlsearch = true
+opt.incsearch = true
 
 -- highlight line of  cursor
-vim.o.cursorline = true
+opt.cursorline = true
 
 -- see :h fillchars
 opt.fillchars = { eob = " " }
 
 -- set background transparent
--- vim.opt.background = "dark"
+-- optpt.background = "dark"
